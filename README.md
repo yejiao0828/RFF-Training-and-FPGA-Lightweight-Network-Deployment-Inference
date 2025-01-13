@@ -1,4 +1,4 @@
-1. Train: Train on the input dataset and get a model file of your own, ".h5 file ", preferably with both structure and weights.
+1. Run "centralized_baseline.py" OR "centralized_TripletCNN.py" : Train on the input dataset and get a model file of your own, ".h5 file ", preferably with both structure and weights.
 2. Run "python3 quantize.py" on docker under tf2 environment.
 3. Run "python3 eval_quantize.py" to evaluate the accuracy loss of the model after quantization.
 4. Run "bash -x compile.sh" compile that quantization model .In particular, note the path and name of the arch.json file. On top of that, you must only get one DPU subgraph after compilation, if there are multiple, then the reason is that your model structure has some layers that Vitis AI does not support or some operators do not support, So you need to run "xir png resnet18_pt/resnet18_pt.xmodel xmodel.png" similar command to visualize your XMODEL file, observe the contents inside the red box in the image. When everything works, the final compilation result will be "Total device subgraph number 3, DPU subgraph number 1".
